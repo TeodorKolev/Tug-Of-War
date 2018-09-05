@@ -1,0 +1,7 @@
+<div [class]="gameEnded ? 'alert-holder popup' : 'alert-holder'">
+  <div *ngIf="gameEnded">
+    <h1 *ngIf="playerOneWins" class="purple-title">Bill Wins!!!</h1>
+    <h1 *ngIf="!playerOneWins" class="green-title">Steve Wins!!!</h1>
+    <button [class]="playerOneWins ? 'btn btn-purple' : 'btn btn-green'" (click)="restartGame()">Restart</button>
+  </div>
+</div>

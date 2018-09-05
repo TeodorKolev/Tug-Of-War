@@ -1,0 +1,9 @@
+.rope {
+  height: 100px;
+  width: calc(100% - 200px);
+  left: 100px;
+  display: inline-block;
+  position: absolute;
+  background: url("/assets/img/rope.png") repeat-x;
+  background-size: contain;
+}

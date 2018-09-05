@@ -1,0 +1,9 @@
+export const PLAYER_ONE_KEY_CODE = 100;
+export const PLAYER_TWO_KEY_CODE = 112;
+export const STEP = 5;
+export const VICTORY_PENALTY = 10;
+export const DEFAULT_PLAYER_PENALTY = 0;
+export const PLAYER_ONE = 'Player One';
+export const PLAYER_TWO = 'Player Two';
+export const PLAYER_WIDTH = 100;
+export const MINIMUM_WINDOW_WIDTH = 400;

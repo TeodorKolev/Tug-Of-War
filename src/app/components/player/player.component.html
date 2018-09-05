@@ -1,0 +1,15 @@
+<div class="player-holder" [style.left]="isPlayerOne() ? playerPosition : null"
+     [style.right]="!isPlayerOne() ? playerPosition : null">
+  <div class="hint-holder" [style.left]="isPlayerOne() ? 0 : null" [style.right]="!isPlayerOne() ? 0 : null">
+    <div *ngIf="isPlayerOne()" [class]="isPlayerOne() ? 'player-one-hint' : 'player-two-hint'">
+      <div class="name-holder">Bill</div>
+      <div *ngIf="!gameEnded" class="hint">Press D</div>
+    </div>
+    <div *ngIf="!isPlayerOne()" [class]="isPlayerOne() ? 'player-one-hint' : 'player-two-hint'">
+      <div class="name-holder">Steve</div>
+      <div *ngIf="!gameEnded" class="hint">Press P</div>
+    </div>
+  </div>
+  <img class="player" [src]="isPlayerOne() ? '/assets/img/player1.png' : '/assets/img/player2.png'" alt="Player"
+       [ngClass]="{'player-one': isPlayerOne(), 'player-two': !isPlayerOne()}">
+</div>

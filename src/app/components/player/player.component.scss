@@ -1,0 +1,41 @@
+@import "../../../theme/variables";
+
+.player-holder {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .player-one {
+    left: 0px;
+  }
+  .player-two {
+    right: 0px;
+  }
+  .hint-holder {
+    width: 100px;
+    position: absolute;
+    top: -80px;
+    text-align: center;
+    .player-one-hint {
+      color: $purple;
+    }
+    .player-two-hint {
+      color: $green;
+    }
+    .name-holder {
+      font-size: 1.5rem;
+    }
+    .hint {
+      animation: blinker 1s linear infinite;
+    }
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: .15;
+  }
+}
