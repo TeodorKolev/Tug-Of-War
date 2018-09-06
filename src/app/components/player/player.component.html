@@ -10,6 +10,6 @@
       <div *ngIf="!gameEnded" class="hint">Press P</div>
     </div>
   </div>
-  <img class="player" [src]="isPlayerOne() ? '/assets/img/player1.png' : '/assets/img/player2.png'" alt="Player"
+  <img class="player" [src]="isPlayerOne() ? './assets/img/player1.png' : './assets/img/player2.png'" alt="Player"
        [ngClass]="{'player-one': isPlayerOne(), 'player-two': !isPlayerOne()}">
 </div>
