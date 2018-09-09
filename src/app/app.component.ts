@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * Listens for keyboard press. Detects pressed keys
    * @param event
    */
-  @HostListener('document: keypress', ['$event'])
+  @HostListener('document:keydown', ['$event'])
   public handleKeyboardEvent(event: KeyboardEvent): void {
     if (!this.gameEnded) {
       if (event.keyCode === PLAYER_ONE_KEY_CODE) {

@@ -1,5 +1,5 @@
-export const PLAYER_ONE_KEY_CODE = 100;
-export const PLAYER_TWO_KEY_CODE = 112;
+export const PLAYER_ONE_KEY_CODE = 68;
+export const PLAYER_TWO_KEY_CODE = 80;
 export const STEP = 5;
 export const VICTORY_PENALTY = 10;
 export const DEFAULT_PLAYER_PENALTY = 0;
