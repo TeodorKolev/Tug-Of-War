@@ -1,5 +1,5 @@
 # Tug-A-War
-Tug A War game build with Angular
+Tug Of War game build with Angular
 
 ## Demo
 https://teodorkolev.github.io/Tug-A-War/
