@@ -28,8 +28,8 @@ export class RopeComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   public ngOnChanges() {
-    this.setRopePosition(this.playerOnePenalty);
-    this.setRopeWidth(this.playerOnePenalty, this.playerTwoPenalty);
+    this.setRopePosition(this.calculateRopePosition(this.playerOnePenalty));
+    this.setRopeWidth(this.calculateRopeWidth(this.playerOnePenalty, this.playerTwoPenalty));
   }
 
   public ngOnDestroy(): void {
@@ -51,34 +51,48 @@ export class RopeComponent implements OnInit, OnDestroy, OnChanges {
     this.gameEndedSubscription = this.endingService.endedEmitter.subscribe((gameEnded: boolean) => {
       if (gameEnded !== null && gameEnded !== undefined) {
         if (gameEnded) {
-          this.setRopePosition(DEFAULT_PLAYER_PENALTY);
-          this.setRopeWidth(DEFAULT_PLAYER_PENALTY, DEFAULT_PLAYER_PENALTY);
+          this.setRopePosition(this.calculateRopePosition(DEFAULT_PLAYER_PENALTY));
+          this.setRopeWidth(this.calculateRopeWidth(DEFAULT_PLAYER_PENALTY, DEFAULT_PLAYER_PENALTY));
         }
       }
     });
   }
 
   /**
-   * Set rope position based on player penalties
+   * Calculate rope position based on player penalties
    * @param playerOnePenalty
    */
-  private setRopePosition(playerOnePenalty: number): void {
-    this.ropePosition = this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
-      this.sanitizer.bypassSecurityTrustStyle('calc(' + playerOnePenalty * STEP + '% / 2' + ' + ' + PLAYER_WIDTH + 'px)') :
-      this.sanitizer.bypassSecurityTrustStyle('calc(' + playerOnePenalty * STEP + '%' + ' + ' + PLAYER_WIDTH + 'px)');
+  private calculateRopePosition(playerOnePenalty: number): string {
+    return this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
+      ('calc(' + playerOnePenalty * STEP + '% / 2' + ' + ' + PLAYER_WIDTH + 'px)').toString() :
+      ('calc(' + playerOnePenalty * STEP + '%' + ' + ' + PLAYER_WIDTH + 'px)').toString();
   }
 
   /**
-   * Set rope width based on both players penalties. Rope is shorter for small screens
+   * Set rope position based on calculated position
+   * @param playerOnePenalty
+   */
+  private setRopePosition(position: string): void {
+    this.ropePosition = this.sanitizer.bypassSecurityTrustStyle(position);
+  }
+
+  /**
+   * Calculate rope width based on both players penalties. Rope is shorter for small screens
    * @param playerOnePenalty
    * @param playerTwoPenalty
    */
-  private setRopeWidth(playerOnePenalty: number, playerTwoPenalty: number): void {
-    this.ropeWidth = this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
-      this.sanitizer.bypassSecurityTrustStyle(
-        'calc(' + (100 - ((playerOnePenalty * STEP / 2) + (playerTwoPenalty * STEP / 2))) + '% - ' + 2 * PLAYER_WIDTH + 'px') :
-      this.sanitizer.bypassSecurityTrustStyle(
-        'calc(' + (100 - ((playerOnePenalty * STEP) + (playerTwoPenalty * STEP))) + '% - ' + 2 * PLAYER_WIDTH + 'px');
+  private calculateRopeWidth(playerOnePenalty: number, playerTwoPenalty: number): string {
+    return this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
+      ('calc(' + (100 - ((playerOnePenalty * STEP / 2) + (playerTwoPenalty * STEP / 2))) + '% - ' + 2 * PLAYER_WIDTH + 'px)').toString() :
+      ('calc(' + (100 - ((playerOnePenalty * STEP) + (playerTwoPenalty * STEP))) + '% - ' + 2 * PLAYER_WIDTH + 'px)').toString();
+  }
+
+  /**
+   * Set rope width based on calculated width
+   * @param width
+   */
+  private setRopeWidth(width: string): void {
+    this.ropeWidth = this.sanitizer.bypassSecurityTrustStyle(width);
   }
 
 }
