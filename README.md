@@ -2,7 +2,7 @@
 Tug Of War game build with Angular
 
 ## Demo
-https://teodorkolev.github.io/Tug-A-War/
+https://teodorkolev.github.io/Tug-Of-War/
 
 ### Run
 ```bash
