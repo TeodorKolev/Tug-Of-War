@@ -16,7 +16,6 @@ export class AlertComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private endingService: EndingService) {
   }
 
-
   public ngOnInit(): void {
     this.gameEndedSubscribe();
   }
