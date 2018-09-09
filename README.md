@@ -1,4 +1,4 @@
-# Tug-A-War
+# Tug-Of-War
 Tug Of War game build with Angular
 
 ## Demo
@@ -12,6 +12,6 @@ npm start
 
 ### Upload to github pages
 ```bash
-ng build --prod --base-href "https://teodorkolev.github.io/Tug-A-War/"
+ng build --prod --base-href "https://teodorkolev.github.io/Tug-Of-War/"
 npx ngh
 ```
