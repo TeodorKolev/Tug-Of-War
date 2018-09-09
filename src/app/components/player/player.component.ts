@@ -68,8 +68,8 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   /**
-   * Set player position. Stronger hands for small screens
-   * @param playerPenalty
+   * Set player position base on calculated position
+   * @param position
    */
   private setPlayerPosition(position: string): void {
     this.playerPosition = this.sanitizer.bypassSecurityTrustStyle(position);
