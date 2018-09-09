@@ -28,7 +28,7 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnChanges(): void {
-    this.setPlayerPosition(this.playerPenalty);
+    this.setPlayerPosition(this.calculatePlayerPosition(this.playerPenalty));
   }
 
   public ngOnDestroy(): void {
@@ -51,20 +51,28 @@ export class PlayerComponent implements OnInit, OnChanges, OnDestroy {
       if (gameEnded !== null && gameEnded !== undefined) {
         this.gameEnded = gameEnded;
         if (gameEnded) {
-          this.setPlayerPosition(DEFAULT_PLAYER_PENALTY);
+          this.setPlayerPosition(this.calculatePlayerPosition(DEFAULT_PLAYER_PENALTY));
         }
       }
     });
   }
 
   /**
+   * Calculate player position. Stronger hands for small screens
+   * @param playerPenalty
+   */
+  private calculatePlayerPosition(playerPenalty: number): string {
+    return this.playerPosition = this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
+      ('calc(' + playerPenalty * STEP + '% / 2)').toString() :
+      ('calc(' + playerPenalty * STEP + '%)').toString();
+  }
+
+  /**
    * Set player position. Stronger hands for small screens
    * @param playerPenalty
    */
-  private setPlayerPosition(playerPenalty: number): void {
-    this.playerPosition = this.innerWidth <= MINIMUM_WINDOW_WIDTH ?
-      this.sanitizer.bypassSecurityTrustStyle('calc(' + playerPenalty * STEP + '% / 2') :
-      this.sanitizer.bypassSecurityTrustStyle('calc(' + playerPenalty * STEP + '%');
+  private setPlayerPosition(position: string): void {
+    this.playerPosition = this.sanitizer.bypassSecurityTrustStyle(position);
   }
 
   /**
